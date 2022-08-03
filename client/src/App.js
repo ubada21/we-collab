@@ -4,7 +4,6 @@ import Tasks from "./components/Tasks";
 import CompleteTasks from "./components/CompleteTasks";
 import AddTask from "./components/AddTask";
 import axios from 'axios'
-import React from "react";
 
 
 
