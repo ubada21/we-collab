@@ -5,9 +5,11 @@ import CompleteTasks from "./components/CompleteTasks";
 import AddTask from "./components/AddTask";
 import axios from 'axios';
 import React from "react";
-import CanvasDraw from "react-canvas-draw"
-import { ResizableBox, Resizable } from "react-resizable";
 import WhiteBoard from "./components/WhiteBoard";
+import Footer from "./components/Footer";
+import pattern1 from "./images/pattern1.svg"
+import TopHeader from "./components/TopHeader";
+
 
 
 
@@ -103,19 +105,13 @@ function App() {
     axios.delete(baseURL + "api/completedtasks/" + newTask._id).then((response) =>{ setCTasks(completedTasks.filter((task) => task.text !== id)) })
     
   }
-
-  const saveCanvas = (e) => {
-    
-  }
   
-
-
   return (
-    <div>
+    <div style={{backgroundImage: `url(${pattern1})`}}>
 
-      <ResizableBox minConstraints={[300, 500]} maxConstraints={[Infinity, Infinity]} >
+        <TopHeader/>
         <WhiteBoard width={1400} height={550} />
-      </ResizableBox>
+      
       <div className='row'>
         
           <div className="container">
@@ -136,6 +132,8 @@ function App() {
           
         </div>
       </div>
+
+      <Footer/>
     </div>
     
 

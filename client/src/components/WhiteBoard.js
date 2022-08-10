@@ -5,12 +5,9 @@ import CanvasDraw from "react-canvas-draw";
 
 const WhiteBoard = ({width, height}) => {
     
-    const [toErase, setToErase] = useState(0)
     const [colour, setColour] = useState('#000000')
     const canvasRef = useRef(null)
-    const onErase = (e) => {
-        setToErase(1)
-    }
+    
     const clearAll = () => {
         canvasRef.current.clear()
     }
@@ -33,7 +30,7 @@ const WhiteBoard = ({width, height}) => {
         canvasRef.current.undo()
     }
     const save = () => {
-        var id = ""
+        
         const canvasData = canvasRef.current.getSaveData()
         axios.delete("http://localhost:4000/api/canvas/")
         axios.post("http://localhost:4000/api/canvas/", {
@@ -51,21 +48,30 @@ const WhiteBoard = ({width, height}) => {
     return (
         <div className="board">
     
-            <CanvasDraw className = 'whiteboard' canvasWidth={width} canvasHeight={height} erase={toErase} ref={canvasRef} hideInterface={true} hideGrid={true} brushColor={colour}  brushRadius={3}></CanvasDraw>
-            <div className='buttonRow'>
-                <button onClick={clearAll}>Clear All</button>
-                <button onClick={undo}>Undo</button>
-               
-                <button className="blueButton" onClick={changeBlue}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                <button className="redButton"  onClick={changeRed}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                <button className="purpleButton" onClick={changePurple}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                <button className="greenButton" onClick={changeGreen}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                <button className="blackButton" onClick={changeBlack}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-                <button onClick={save}>Save</button>
-                <button onClick={load}>Load</button>
-            </div>
+            <CanvasDraw className = 'whiteboard' backgroundColor="aliceblue" canvasWidth={width} canvasHeight={height} ref={canvasRef} hideInterface={false} hideGrid={true} brushColor={colour}  brushRadius={3}></CanvasDraw>
             
+            <div className="buttonRow">
+
+            
+                <div className="undoClearRow" alig>
+                    <button className="saveBtn" onClick={clearAll}>Clear All</button>
+                    <button className="saveBtn" onClick={undo}>Undo</button>
+                </div>
+                    
+                
+                <div className='colourRow'>
+                    <button className="blueButton" onClick={changeBlue}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button className="redButton"  onClick={changeRed}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button className="purpleButton" onClick={changePurple}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button className="greenButton" onClick={changeGreen}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button className="blackButton" onClick={changeBlack}>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+
+                <div className="saveLoadRow">
+                    <button className="saveBtn" onClick={save}>Save</button>
+                    <button className="saveBtn" onClick={load}>Load</button>
+                </div>
+            </div>
 
         </div>
     
