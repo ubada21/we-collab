@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended:false}))
 app.use('/api/tasks', require('./routes/taskRoutes'))
 app.use('/api/progresstasks', require('./routes/IPTaskRoutes'))
 app.use('/api/completedtasks', require('./routes/completedTaskRoutes'))
+app.use('/api/canvas', require('./routes/canvasRoutes'))
 app.use(cors)
 app.use(errorHandler)
 

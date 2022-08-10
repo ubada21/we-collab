@@ -3,7 +3,13 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import CompleteTasks from "./components/CompleteTasks";
 import AddTask from "./components/AddTask";
-import axios from 'axios'
+import axios from 'axios';
+import React from "react";
+import CanvasDraw from "react-canvas-draw"
+import { ResizableBox, Resizable } from "react-resizable";
+import WhiteBoard from "./components/WhiteBoard";
+
+
 
 
 
@@ -27,6 +33,7 @@ function App() {
     axios.get(baseURL + 'api/completedtasks').then((response) => {
       setCTasks(response.data)
     })
+  
     
   }, [])
 
@@ -96,23 +103,38 @@ function App() {
     axios.delete(baseURL + "api/completedtasks/" + newTask._id).then((response) =>{ setCTasks(completedTasks.filter((task) => task.text !== id)) })
     
   }
+
+  const saveCanvas = (e) => {
+    
+  }
   
+
+
   return (
-    <div className='row'>
-      <div className="container">
-        <Header title="To-Do" />
-        <Tasks tasks={tasks} onDelete={deleteTask} onProgress={progressTask}/>
-        <AddTask onAdd={addTask}/>
-      </div>
-      <div className='container'>
-        <Header title="In Progress"/>
-        <Tasks tasks={inProgressTasks} onDelete={deleteIPTask} onProgress={completeTask}/>
-      </div>
-      <div className='container' style={{justifyContent:'center'}}>
-        <Header title="Completed" />
+    <div>
+
+      <ResizableBox minConstraints={[300, 500]} maxConstraints={[Infinity, Infinity]} >
+        <WhiteBoard width={1400} height={550} />
+      </ResizableBox>
+      <div className='row'>
         
-        {/* On Complete, show image? sound? something to signal completion. */}
-        <CompleteTasks tasks={completedTasks} onDelete={deleteCTask} onProgress={completeTask}/>
+          <div className="container">
+            <Header title="To-Do" />
+            <Tasks tasks={tasks} onDelete={deleteTask} onProgress={progressTask}/>
+            <AddTask onAdd={addTask}/>
+          </div>
+          <div className='container'>
+            <Header title="In Progress"/>
+            <Tasks tasks={inProgressTasks} onDelete={deleteIPTask} onProgress={completeTask}/>
+          </div>
+          <div className='container' >
+            <Header title="Completed" />
+            
+            {/* On Complete, show image? sound? something to signal completion. */}
+            <CompleteTasks tasks={completedTasks} onDelete={deleteCTask} onProgress={completeTask}/>
+
+          
+        </div>
       </div>
     </div>
     

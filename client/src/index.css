@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,12 +9,17 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Indie Flower';
 }
 
 
 .row {
   display: flex;
+  border-radius: 10px;
+  border: 5px solid #964b00;
+  margin: 20px auto;
+  background-image: url("images/pattern.svg");
+  background-size: 0.5%;
 }
 
 .container {
@@ -20,10 +27,16 @@ body {
   margin: 30px auto ;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  /* border: 1px solid steelblue; */
   padding: 30px;
   border-radius: 5px;
+  border-color: #f4f4f4;
+  /* background-color: bisque; */
 
+}
+.whiteboard {
+  margin: 30px auto;
+  border:3px solid #000;
 }
 /* .containerC {
   max-width: 500px;
@@ -61,6 +74,44 @@ body {
   outline: none;
 }
 
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+ 
+}
+
+.blueButton {
+  background-color: dodgerblue;
+  border-radius: 1000px;
+  border-color: dodgerblue;
+}
+
+.redButton {
+  background-color: red;
+  border-radius: 1000px;
+  border-color: red;
+}
+
+.greenButton {
+  background-color: forestgreen;
+  border-radius: 1000px;
+  border-color: forestgreen;
+}
+
+.purpleButton {
+  background-color: blueviolet;
+  border-radius: 1000px;
+  border-color: blueviolet;
+}
+
+.blackButton {
+  background-color: black;
+  border-radius: 1000px;
+  border-color: black;
+}
+
 .btn:active {
   transform: scale(0.98);
 }
@@ -75,17 +126,38 @@ body {
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
-}
+  word-wrap: break-word;
 
-.task.reminder {
-  border-left: 5px solid green;
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  /* height:10em;
+  width:10em; */
+  padding:1em;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  
 }
 
 .task h3 {
+  font-family: 'Indie Flower';
+  font-size: 2rem;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+}
+
+
+/* .task  {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 .add-form {
   margin-bottom: 40px;
@@ -104,6 +176,7 @@ body {
   height: 40px;
   margin: 5px;
   padding: 3px 7px;
+
   font-size: 17px;
 }
 
@@ -125,6 +198,11 @@ body {
 .buttons {
   display:flex;
   justify-content: space-between;
+}
+
+.board {
+  border: 2px solid #964b00;
+  border-radius: 10px;
 }
 
 
