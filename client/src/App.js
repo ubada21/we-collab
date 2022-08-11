@@ -16,7 +16,7 @@ import TopHeader from "./components/TopHeader";
 
 
 
-const baseURL = "http://localhost:4000/"
+const baseURL = ""
 
 // TODO collapse todo list part with button, and show with same button toggle. button text changes on toggle
 function App() {
@@ -48,7 +48,7 @@ function App() {
     
     const newTask = {...task}
     // setTasks([...tasks, newTask])
-    axios.post("http://localhost:4000/api/tasks", {
+    axios.post(baseURL + "api/tasks", {
       text: newTask.text, 
     }).then((response) =>{ setTasks([...tasks, response.data]) })
     
@@ -61,12 +61,12 @@ function App() {
 
     const newTask = tasks.find(task => task.text === id)
 
-    axios.delete("http://localhost:4000/api/tasks/" + newTask._id).then((response) => {
+    axios.delete(baseURL + "api/tasks/" + newTask._id).then((response) => {
       setTasks(tasks.filter((task) => task.text !== id))
     })
     
 
-    axios.post("http://localhost:4000/api/progresstasks", {
+    axios.post(baseURL + "api/progresstasks", {
       text: newTask.text,  
     }).then((response) =>{ setIPTasks([...inProgressTasks, response.data]) })
     

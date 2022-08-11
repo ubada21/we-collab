@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useRef } from "react"
-import CanvasDraw from "react-canvas-draw";
-
+import CanvasDraw from 'react-canvas-draw'
+const baseURL = ""
 
 const WhiteBoard = ({width, height}) => {
     
@@ -32,15 +32,15 @@ const WhiteBoard = ({width, height}) => {
     const save = () => {
         
         const canvasData = canvasRef.current.getSaveData()
-        axios.delete("http://localhost:4000/api/canvas/")
-        axios.post("http://localhost:4000/api/canvas/", {
+        axios.delete(baseURL + "api/canvas/")
+        axios.post(baseURL + "api/canvas/", {
             text: canvasData,
           }).then()
         
     }
 
     const load = () => {
-        axios.get("http://localhost:4000/api/canvas").then((response) => {
+        axios.get(baseURL + "api/canvas").then((response) => {
             canvasRef.current.loadSaveData(response.data[0].text, true)
             
           })
