@@ -16,7 +16,8 @@ import TopHeader from "./components/TopHeader";
 
 
 
-const baseURL = "http://localhost:4000/"
+// const baseURL = "http://localhost:4000/"
+const baseURL = ""
 
 // TODO collapse todo list part with button, and show with same button toggle. button text changes on toggle
 function App() {
